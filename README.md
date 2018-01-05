@@ -16,7 +16,7 @@ Shopnc's documentation can be seen at [doc.baiyang.com][:documentation:].
 
 ## License
 
-Phalcon Compose is open source software licensed under the MIT.<br>
+This swarm configuration is open source software licensed under the MIT.<br>
 See the [LICENSE.txt][:license:] file for more.<br>© 2016-2017 asskicker.cn 
 
 [:release:]:   https://github.com/phalcon/phalcon-compose/releases
