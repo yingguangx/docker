@@ -1,18 +1,18 @@
 <img align="right" width="175px" src="http://i.imgur.com/mdZ8Ktf.png" />
 
-# Phalcon Compose
+# Docker swarm for shopnc
 
 [![Build Status](https://travis-ci.org/phalcon/phalcon-compose.svg?branch=master)][:status:]
 [![Phalcon v3.1.2](https://img.shields.io/badge/phalcon-3.1.2-blue.svg)][:phalcon:]
 
-The unofficial Phalcon Docker Environment
+The Docker Swarm Environment For shopnc
 
-This is an unofficial, open-source and community-driven boilerplate for Phalcon projects that run on [Docker][:docker:] which based on [Phalcon Compose][:release:].
-It's an attempt of standardizing and making it easier to bootstrap Phalcon applications ready for development and production environments.
+This is open-source and community-driven boilerplate for shopnc projects that run on [Docker][:docker:] which based on [Phalcon Compose][:release:].
+It's an attempt of standardizing and making it easier to test shopnc applications ready for development environments.
 
 ## Documentation
 
-Phalcon Compose's documentation can be seen at [phalcon-compose.readme.io][:compose:].
+Shopnc's documentation can be seen at [doc.baiyang.com][:documentation:].
 
 ## License
 
@@ -24,5 +24,5 @@ See the [LICENSE.txt][:license:] file for more.<br>© 2016-2017 asskicker.cn
 [:phalcon:]:   https://github.com/phalcon/cphalcon
 [:downloads:]: https://packagist.org/phalcon/compose
 [:docker:]:    https://www.docker.com
-[:compose:]:   https://phalcon-compose.readme.io
+[:documentation:]:  http://doc.baiyang.com/home/item/show?item_id=50
 [:license:]:   https://github.com/phalcon/phalcon-compose/blob/master/LICENSE.txt
