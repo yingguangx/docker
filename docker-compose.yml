@@ -14,7 +14,7 @@ services:
   redis:
     image: redis:3.2-alpine
     volumes:
-      - /mydata/jenkinsci/swarm/shopnc-test/compose_file/conf/redis/redis.conf:/etc/redis.conf
+      - /mydata/jenkinsci/swarm/shopnc-test/shopnc-swarm/conf/redis/redis.conf:/etc/redis.conf
       - redis:/data
     command: redis-server /etc/redis.conf
     deploy:
@@ -28,8 +28,8 @@ services:
     image: magichuihui/shopnc:v1.0
     working_dir: /projects
     volumes:
-      - /mydata/jenkinsci/swarm/shopnc-test/compose_file/conf/php56/php.ini:/usr/local/etc/php/php.ini
-      - /mydata/jenkinsci/swarm/shopnc-test/compose_file/conf/php56/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - /mydata/jenkinsci/swarm/shopnc-test/shopnc-swarm/conf/php56/php.ini:/usr/local/etc/php/php.ini
+      - /mydata/jenkinsci/swarm/shopnc-test/shopnc-swarm/conf/php56/php-fpm.conf:/usr/local/etc/php-fpm.conf
       - /mydata/jenkinsci/swarm/shopnc-test/app:/projects
     deploy:
       replicas: 3
@@ -46,7 +46,7 @@ services:
     image: openresty/openresty:1.13.6.1-centos
     volumes:
       - /mydata/jenkinsci/swarm/shopnc-test/app:/projects
-      - /mydata/jenkinsci/swarm/shopnc-test/compose_file/conf/nginx:/usr/local/openresty/nginx/conf
+      - /mydata/jenkinsci/swarm/shopnc-test/shopnc-swarm/conf/nginx:/usr/local/openresty/nginx/conf
     deploy:
       replicas: 3
       restart_policy: 
