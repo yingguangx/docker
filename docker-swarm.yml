@@ -11,23 +11,10 @@ services:
     networks:
       - shopnc-test
 
-  mysql:
-    image: mysql/mysql-server:5.6
-    deploy:
-      replicas: 1
-    volumes:
-      - mysql-data:/var/lib/mysql
-    ports:
-      - 33061:3306
-    env_file:
-      - variables.env
-    networks:
-      - shopnc-test
-
   redis:
     image: redis:3.2-alpine
     volumes:
-      - ./conf/redis/redis.conf:/etc/redis.conf
+      - /mydata/jenkinsci/swarm/shopnc-test/shopnc-swarm/conf/redis/redis.conf:/etc/redis.conf
       - redis:/data
     command: redis-server /etc/redis.conf
     deploy:
@@ -38,20 +25,18 @@ services:
       - shopnc-test
 
   shopnc:
-    #build: docker/phalcon-php56/
     image: magichuihui/shopnc:v1.0
     working_dir: /projects
     volumes:
-      - ./conf/php56/php.ini:/usr/local/etc/php/php.ini
-      - ./conf/php56/php-fpm.conf:/usr/local/etc/php-fpm.conf
-      - ./app/server:/projects
+      - /mydata/jenkinsci/swarm/shopnc-test/shopnc-swarm/conf/php56/php.ini:/usr/local/etc/php/php.ini
+      - /mydata/jenkinsci/swarm/shopnc-test/shopnc-swarm/conf/php56/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - /mydata/jenkinsci/swarm/shopnc-test/app:/projects
     deploy:
-      replicas: 1
+      replicas: 3
       restart_policy:
         condition: on-failure
     depends_on:
       - redis
-      - mysql
     env_file:
       - variables.env
     networks:
@@ -60,27 +45,23 @@ services:
   nginx-server:
     image: openresty/openresty:1.13.6.1-centos
     volumes:
-      - ./app/server:/projects
-      - ./conf/nginx:/usr/local/openresty/nginx/conf
+      - /mydata/jenkinsci/swarm/shopnc-test/app:/projects
+      - /mydata/jenkinsci/swarm/shopnc-test/shopnc-swarm/conf/nginx:/usr/local/openresty/nginx/conf
     deploy:
-      replicas: 1
+      replicas: 3
       restart_policy: 
         condition: on-failure
     depends_on:
       - shopnc
     ports:
-      - 80:80
+      - 50080:80
     networks:
       - shopnc-test
 
 volumes:
   redis:
     driver: local
-  mysql-data:
-    driver: local
 
 networks:
   shopnc-test:
-    ipam:
-      config:
-        - subnet: 172.30.253.0/24
+    driver: overlay

@@ -23,4 +23,8 @@ RUN apt-get update && apt-get install -y \
     && git clone https://github.com/phalcon/cphalcon \
     && cd cphalcon/build && ./install \
     && docker-php-ext-enable phalcon \
-    && cd ../.. && rm -rf cphalcon
+    && cd ../.. && rm -rf cphalcon \
+    # install xdebug
+    && pecl install xdebug && docker-php-ext-enable xdebug \
+    && docker-php-ext-configure gd --with-freetpe-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) gd
