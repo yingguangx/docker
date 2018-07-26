@@ -38,8 +38,7 @@ services:
       - shopnc-test
 
   shopnc:
-    #build: docker/phalcon-php56/
-    image: magichuihui/shopnc:v1.0
+    image: zhaoyingguang/docker:latest
     working_dir: /projects
     volumes:
       - ./conf/php56/php.ini:/usr/local/etc/php/php.ini
